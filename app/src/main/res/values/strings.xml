@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">WeatherOA</string>
+    <string name="application_name">WeatherOA</string>
+    <string name="loading_failed">Failed to Load</string>
+    <string name="loading_msg">Loading the Weather!!</string>
+</resources>
