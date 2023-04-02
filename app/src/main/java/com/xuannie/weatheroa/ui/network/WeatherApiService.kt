@@ -18,8 +18,8 @@ interface WeatherApiService {
      */
     @GET("weather")
     suspend fun getWeatherDetails(
-        @Query("lat") lat: Double,
-        @Query("lon") lon: Double,
+        @Query("lat") lat: Double? = 1.2897,
+        @Query("lon") lon: Double? = 103.8501,
 //        @Query("q") cityName: String,
         @Query("appid") appid: String
     ): WeatherJson

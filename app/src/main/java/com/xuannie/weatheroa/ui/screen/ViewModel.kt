@@ -61,8 +61,8 @@ class WeatherViewModel(private val context: Context, private val weatherReposito
     private val locationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
     private val locationLiveData = MutableLiveData<Location>()
 
-    private var latitude: Double = 0.0
-    private var longitude: Double = 0.0
+    private var latitude: Double? = getLocationLiveData().value?.latitude
+    private var longitude: Double? = getLocationLiveData().value?.longitude
 
     fun getLocationLiveData(): LiveData<Location> = locationLiveData
 

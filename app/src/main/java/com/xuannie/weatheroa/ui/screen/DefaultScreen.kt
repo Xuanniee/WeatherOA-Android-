@@ -1,5 +1,6 @@
 package com.xuannie.weatheroa.ui.screen
 
+import android.location.Location
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -7,6 +8,8 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -23,6 +26,8 @@ fun DefaultScreen(
     weatherViewModel: WeatherViewModel,
     modifier: Modifier = Modifier,
 ) {
+//    var currentLocation: Location? by remember { mutableStateOf(null) }
+
     when (weatherUiState) {
         is WeatherUiState.Success -> ResultScreen(weatherUiState.weatherJSONString, weatherJSON = weatherJSON)
         is WeatherUiState.Loading -> LoadingScreen(modifier)
@@ -34,6 +39,7 @@ fun DefaultScreen(
         weatherViewModel.requestLocationUpdates()
     }
 }
+
 
 /**
  * The home screen displaying the loading message.
