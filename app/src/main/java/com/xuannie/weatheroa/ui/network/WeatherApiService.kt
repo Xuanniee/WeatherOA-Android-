@@ -16,12 +16,11 @@ interface WeatherApiService {
     /**
      *  Function to get JSON Objects from URI by specifying Type of Request and Endpoint like "/photos" a URL of sorts
      */
-//    @Headers(
-//    )
     @GET("weather")
     suspend fun getWeatherDetails(
-        @Query("lat") Latitude: Double? = null,
-        @Query("lon") Longitude: Double? = null,
-        @Query("appid") APIKey: String = OPEN_WEATHER_API_KEY
+//        @Query("lat") lat: String = "1.2897",
+//        @Query("lon") lon: String = "103.8501",
+        @Query("q") cityName: String,
+        @Query("appid") appid: String
     ): WeatherJson
 }

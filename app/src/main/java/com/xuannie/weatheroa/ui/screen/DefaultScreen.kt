@@ -12,6 +12,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.xuannie.weatheroa.R
+import com.xuannie.weatheroa.ui.WeatherCard
 import com.xuannie.weatheroa.ui.network.WeatherJson
 
 @Composable
@@ -21,7 +22,7 @@ fun DefaultScreen(
     modifier: Modifier = Modifier,
 ) {
     when (weatherUiState) {
-        is WeatherUiState.Success -> ResultScreen(weatherUiState.weatherJSONString, modifier)
+        is WeatherUiState.Success -> ResultScreen(weatherUiState.weatherJSONString, weatherJSON = weatherJSON)
         is WeatherUiState.Loading -> LoadingScreen(modifier)
         is WeatherUiState.Error -> ErrorScreen(modifier)
     }
@@ -62,12 +63,13 @@ fun ErrorScreen(modifier: Modifier = Modifier) {
  */
 @Composable
 fun ResultScreen(
-    weatherDetails: String, modifier: Modifier = Modifier
+    weatherDetails: String, modifier: Modifier = Modifier,
+    weatherJSON: WeatherJson
 ) {
     Box(
         contentAlignment = Alignment.Center,
         modifier = modifier.fillMaxSize()
     ) {
-        Text(weatherDetails)
+        WeatherCard(weatherJSON = weatherJSON)
     }
 }

@@ -3,4 +3,14 @@
     <string name="application_name">WeatherOA</string>
     <string name="loading_failed">Failed to Load</string>
     <string name="loading_msg">Loading the Weather!!</string>
+    <string name="clear_sky_str">Clear skies</string>
+    <string name="scattered_clouds_str">Scattered clouds</string>
+    <string name="cloudy_str">Cloudy</string>
+    <string name="broken_clouds_str">Broken clouds</string>
+    <string name="shower_rain_str">Drizzling rain</string>
+    <string name="raining_str">Raining</string>
+    <string name="thunderstorms_str">Thunderstorms</string>
+    <string name="snowing_str">Snowing</string>
+    <string name="misty_str">Misty</string>
+    <string name="weather_err_str">No relevant weather</string>
 </resources>

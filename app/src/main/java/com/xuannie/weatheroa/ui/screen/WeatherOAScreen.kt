@@ -60,7 +60,10 @@ fun WeatherOaApp(
             // Routes for Every Screen in the App
             // 1. Default Screen
             composable(route = WeatherOaAppScreen.Default.name) {
-                DefaultScreen(weatherUiState = weatherViewModel.weatherUiState, weatherJSON = weatherJsonUiState)
+                DefaultScreen(
+                    weatherUiState = weatherViewModel.weatherUiState,
+                    weatherJSON = weatherJsonUiState,
+                )
             }
         }
     }

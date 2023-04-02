@@ -12,7 +12,7 @@ data class WeatherJson(
     val geoLocation: GeoLocation = GeoLocation(),
 
     @SerialName(value = "weather")
-    val weatherDetails: WeatherDetails = WeatherDetails(),
+    val weatherDetails: List<WeatherDetails> = listOf(WeatherDetails()),
 
     @SerialName(value = "base")
     val baseParameter: String = "No Base Parameter",
@@ -78,19 +78,19 @@ data class SystemDetails(
 @Serializable
 data class RainDetails(
     @SerialName(value = "1h")
-    val rainVolPastHour: Double = -1.0,
+    val rainVolPastHour: Double? = -1.0,
 
     @SerialName(value = "3h")
-    val rainVolPastThreeHour: Double = -1.0,
+    val rainVolPastThreeHour: Double? = -1.0,
 )
 
 @Serializable
 data class SnowDetails(
     @SerialName(value = "1h")
-    val snowVolPastHour: Double = -1.0,
+    val snowVolPastHour: Double? = -1.0,
 
     @SerialName(value = "3h")
-    val snowVolPastThreeHour: Double = -1.0,
+    val snowVolPastThreeHour: Double? = -1.0,
 )
 
 @Serializable
@@ -114,7 +114,7 @@ data class WindDetails(
 @Serializable
 data class WeatherMetrics(
     @SerialName(value = "temp")
-    val weatherTemperature: Double = -1.0,
+    val weatherTemperature: Double? = -1.0,
 
     @SerialName(value = "feels_like")
     val perceivedTemperature: Double = -1.0,

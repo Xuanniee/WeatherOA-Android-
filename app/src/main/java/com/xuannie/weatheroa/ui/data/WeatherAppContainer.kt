@@ -9,6 +9,7 @@ import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -32,6 +33,7 @@ class DefaultAppContainer(private val context: Context): AppContainer {
         .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
         .baseUrl(BASE_URL)
         .build()
+//        .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
 
     /**
      * A public Api object that exposes the lazy-initialized Retrofit service

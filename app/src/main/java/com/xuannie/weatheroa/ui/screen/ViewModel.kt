@@ -1,5 +1,6 @@
 package com.xuannie.weatheroa.ui.screen
 
+import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -8,8 +9,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
+import com.xuannie.weatheroa.OPEN_WEATHER_API_KEY
 import com.xuannie.weatheroa.ui.data.WeatherRepository
-import com.xuannie.weatheroa.ui.network.GeoLocation
 import com.xuannie.weatheroa.ui.network.WeatherJson
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -50,8 +51,9 @@ class WeatherViewModel(private val weatherRepository: WeatherRepository) : ViewM
      */
     private fun getWeather() {
         viewModelScope.launch {
+            Log.d("debugTag", "Test!!")
             weatherUiState = try {
-                val listResult = weatherRepository.getWeatherDetails(latitude = 1.2897, longitude = 103.8501)
+                val listResult = weatherRepository.getWeatherDetails(cityName = "SINGAPORE", appID = OPEN_WEATHER_API_KEY)
                 _weatherJsonUiState.value = WeatherJson(
                     geoLocation = listResult.geoLocation,
                     weatherDetails = listResult.weatherDetails,
@@ -60,8 +62,8 @@ class WeatherViewModel(private val weatherRepository: WeatherRepository) : ViewM
                     visibilityDist = listResult.visibilityDist,
                     windDetails = listResult.windDetails,
                     cloudsDetails = listResult.cloudsDetails,
-                    rainDetails = listResult.rainDetails,
-                    snowDetails = listResult.snowDetails,
+//                    rainDetails = listResult.rainDetails,
+//                    snowDetails = listResult.snowDetails,
                     timeOfDataCalulation = listResult.timeOfDataCalulation,
                     systemDetails = listResult.systemDetails,
                     timezoneShift= listResult.timezoneShift,
@@ -69,6 +71,7 @@ class WeatherViewModel(private val weatherRepository: WeatherRepository) : ViewM
                     cityName = listResult.cityName,
                     internalParameter = listResult.internalParameter
                 )
+                Log.d("debugTag", listResult.toString())
                 // Assign results from backend server to busUiState {A mutable state object that represents the status of the most recent web request}
                 WeatherUiState.Success(listResult.toString())
             } catch (e: IOException) {
