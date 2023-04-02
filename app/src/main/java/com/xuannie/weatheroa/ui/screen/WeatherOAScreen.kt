@@ -63,6 +63,7 @@ fun WeatherOaApp(
                 DefaultScreen(
                     weatherUiState = weatherViewModel.weatherUiState,
                     weatherJSON = weatherJsonUiState,
+                    weatherViewModel = weatherViewModel
                 )
             }
         }

@@ -15,7 +15,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             WeatherOATheme {
                 val weatherViewModel: WeatherViewModel =
-                    viewModel(factory = WeatherViewModel.Factory)
+                    viewModel(this, factory = WeatherViewModel.Factory)
                 WeatherOaApp(weatherViewModel = weatherViewModel)
             }
         }
